@@ -20,8 +20,37 @@
     </div>
   </div>
   <div class="relative">
-    <button type="button" id="user-menu-button" class="img-down-arrow ">
+    <button type="button" id="user-menu-button" phx-click={ElixirGistWeb.Layouts.App.toggle_user_menu()} class="img-down-arrow ">
       <img src={~p"/images/user-image.svg"} alt="Profile image" class="round-image-padding w-8 h-8"/>
     </button>
+    <div id="user-menu" hidden="true" phx-click-away={ElixirGistWeb.Layouts.App.toggle_user_menu()} class="dropdown-menu-arrow absolute right-0 mt-2 py-2 w-48 bg-emDark rounded-lg shadow-xl border border-white">
+      <div class="px-4 py-2">
+        <%= if @current_user do %>
+          <.link href={~p"/users/settings"} class="menu-item border-b border-white border-opacity-50" role="menuitem" tabindex="-1" id="settings-link">
+            Signed in as <%= @current_user.email %>
+          </.link>
+          <.link href="#" class="menu-item" role="menuitem" tabindex="-1" id="your-gists-link">
+            Your gists
+          </.link>
+          <.link href="#" class="menu-item border-b border-white border-opacity-50" role="menuitem" tabindex="-1" id="saved-gists-link">
+            Saved gists
+          </.link>
+          <.link href={~p"/users/log_out"} method="delete"class="menu-item" role="menuitem" tabindex="-1" id="logout-link">
+            Sign out
+          </.link>
+        <% else %>
+          <.link href={~p"/users/log_in"} class="menu-item border-b border-white border-opacity-50" role="menuitem" tabindex="-1" id="login-link">
+            Login
+          </.link>
+          <.link href={~p"/users/register"} class="menu-item" role="menuitem" tabindex="-1" id="register-link">
+            Register
+          </.link>
+        <% end %>
+      </div>
+    </div>
   </div>
 </header>
+<main>
+  <.flash_group flash={@flash} />
+  <%= @inner_content %>
+</main>
