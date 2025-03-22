@@ -12,7 +12,7 @@
      <input 
       type="text" 
       placeholder="Search..." 
-      class="rounded-lg focus:outline-none focus:border-emLavendar focus:ring-0 bg-emDark-dark text-white px-4 py-2 placeholder-emDark-light font-brand font-regular text-sm mr-4 border-white" 
+      class="rounded-lg focus:outline-none focus:border-emLavender focus:ring-0 bg-emDark-dark text-white px-4 py-2 placeholder-emDark-light font-brand font-regular text-sm mr-4 border-white" 
      />
      <button class=" text-white text-[1rem] text-white font-brand font-bold text-sm px-4 py-2 rounded-lg hover:text-emDark-light">
       All gists
@@ -54,3 +54,17 @@
   <.flash_group flash={@flash} />
   <%= @inner_content %>
 </main>
+<footer class="h-[120px] w-full flex justify-center text-white font-brand font-regular text-xs px-16 py-20">
+  <div class="w-full px-10">
+    <div class="border-t-[1px] border-white border-opacity-50"></div>
+    <div class="flex items-center space-x-4 py-6">
+      <img src={~p"/images/gist-logo.svg"} alt="Logo" class="w-8 h-8" />
+      <p>&copy; 2025 Fake Gists</p>
+      <div class="text-emLavender px-4 space-x-2">
+        <a href={~p"/"} class="hover:text-emLavender-light hover:underline">Terms</a>
+        <a href={~p"/"} class="hover:text-emLavender-light hover:underline">Privacy</a>
+        <a href={~p"/"} class="hover:text-emLavender-light hover:underline">About</a>
+      </div>
+    </div>
+  </div>
+</footer>
